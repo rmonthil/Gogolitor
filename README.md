@@ -65,6 +65,8 @@ Build the documentation in html format using Sphinx :
 - [ ] Write the naming conventions
 - [ ] Copyrite notice should be in each file of the source code
 - [ ] Add references
+- [ ] Draw a logo, improve this README with pictures and increas this TODO list 
+- [ ] Build the documentation of the "physics" part
 
 ### Structure or Optimisation
 - [ ] Rewrite the Vector class with two template arguments
