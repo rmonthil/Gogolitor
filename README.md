@@ -86,7 +86,7 @@ Build the documentation in html format using Sphinx :
 - [ ] Solver optimisation for a structured mesh ?
 - [ ] Try out other time schemes : Rung-Kuta and/or Adams-Bashforth methods.
 - [ ] Add a Lagrangian solver : Look at the boundary element method.
-- [ ] Take a look to [vortons](vortons_doc).
+- [ ] Take a look to [vortons][vortons_doc].
 
 
 ## License
@@ -96,7 +96,7 @@ Gogolitor is provided under the MIT license, that can be found in the [LICENSE][
 
 ## Authors
 
-* [Rémi Monthiller](https://github.com/leDernier/Gogolitor)
+* [Rémi Monthiller](https://github.com/leDernier)
 
 [license]: ./LICENSE
 [vs2015_runtime]: https://www.microsoft.com/en-us/download/details.aspx?id=48145
