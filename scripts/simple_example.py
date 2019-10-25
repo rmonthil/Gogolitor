@@ -15,15 +15,19 @@ def init_mesh(m):
     h0 = 20.0
     center = gg.Vector(2)
     center[0], center[1] = lx/2.0, ly/2.0
-    r = 3.0
-    hr = h0 + 1.0
+    r = 15.0
+    hr = h0 + 0.0
+    fr = 0.0
     for c in m.cells:
         if (c.position - center).norm() < r:
             c.data[0] = hr # data[0] is h, data[1] is ux, data[2] is uy
+            c.data[4] = fr # data[4] is a source terme
         else:
             c.data[0] = h0 # data[0] is h, data[1] is ux, data[2] is uy
+            c.data[4] = 0.0
         c.data[1] = 0.0 # data[0] is h, data[1] is ux, data[2] is uy
         c.data[2] = 0.0 # data[0] is h, data[1] is ux, data[2] is uy
+        c.data[3] = 0.0 # data[3] is a copy of h
 
 init_mesh(m)
 

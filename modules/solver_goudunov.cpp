@@ -8,7 +8,7 @@ template<class T>
 SolverGoudunov<T>::SolverGoudunov(Mesh<T>* pMesh, const double& dt) : SolverEulerian<T>(pMesh, dt), m_f(pMesh->links.size(), Vector<T>(3)) {
 	Mesh<T>& mesh = *SolverEulerian<T>::m_pMesh;
 	for(std::size_t k = 0; k < mesh.cells.size(); k++){
-		mesh.cells[k].data.resize(4);
+		mesh.cells[k].data.resize(MESH_DATA_SIZE, 0.0);
 	}
 }
 
@@ -22,6 +22,7 @@ void SolverGoudunov<T>::update() {
 	// Compute the fluxs
 	computeFlux();
 	// Update based on the computed flux
+	// TODO : Could be a bit optimized
 	for(std::size_t k = 0; k < mesh.links.size(); k++){
 		const T h1 = mesh.links[k].pCell1->data[MESH_DATA_H_COPY];
 		const T dh1 = -Solver<T>::m_dt*mesh.links[k].size/mesh.links[k].pCell1->surface * m_f[k][0];
@@ -70,12 +71,13 @@ void SolverGoudunov<T>::computeFlux() {
 		if (lambda_1 >= 0.0) {
 			m_f[k] = f(h1, un1, ut1);
 		}
-		else if (lambda_2 <= 0.0) {
+		else if (lambda_2 < 0.0) {
 			m_f[k] = f(h2, un2, ut2);
 		}
 		else {
 			m_f[k] = (lambda_2 * f(h1, un1, ut1) - lambda_1 * f(h2, un2, ut2) + lambda_1 * lambda_2 * (U2 - U1))/(lambda_2 - lambda_1);
 		}
+		m_f[k][0] += -mesh.links[k].pCell1->data[MESH_DATA_SOURCE] + mesh.links[k].pCell2->data[MESH_DATA_SOURCE]; // TODO Should be F/(rho l_tot)
 	}
 }
 

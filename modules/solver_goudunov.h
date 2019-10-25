@@ -14,6 +14,7 @@ class SolverGoudunov : public SolverEulerian<T> {
 			MESH_DATA_UX,
 			MESH_DATA_UY,
 			MESH_DATA_H_COPY,
+			MESH_DATA_SOURCE,
 			MESH_DATA_SIZE
 		};
 	public:
