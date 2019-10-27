@@ -10,6 +10,8 @@
 #include <functional>
 #include <algorithm>
 
+namespace gogolitor {
+
 template<class T>
 struct Vector : public std::vector<T> {
 	Vector(const std::size_t& dim) : std::vector<T>(dim) {
@@ -75,6 +77,8 @@ struct Vector : public std::vector<T> {
 template<class T>
 inline Vector<T> operator*(const T& b, const Vector<T>& a) {
 	return a * b;
+}
+
 }
 
 #endif

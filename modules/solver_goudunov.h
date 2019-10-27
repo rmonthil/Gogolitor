@@ -6,6 +6,8 @@
 
 // TODO : Add Slope and Bathimetry effect
 
+namespace gogolitor {
+
 template<class T>
 class SolverGoudunov : public SolverEulerian<T> {
 	public:
@@ -29,6 +31,8 @@ class SolverGoudunov : public SolverEulerian<T> {
 		// Fluxs
 		std::vector<Vector<T>> m_f; // Fx =(Fh, Fuxh, Fuyh)
 };
+
+}
 
 #include "solver_goudunov.cpp"
 #endif

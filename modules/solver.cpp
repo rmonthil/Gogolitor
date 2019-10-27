@@ -7,7 +7,7 @@
 // Solver Class
 
 template<class T>
-Solver<T>::Solver(const double& dt) : m_dt(dt) {
+gogolitor::Solver<T>::Solver(const double& dt) : m_dt(dt) {
 
 }
 

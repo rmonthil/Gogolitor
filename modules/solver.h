@@ -4,6 +4,8 @@
 
 #include "gvector.h"
 
+namespace gogolitor {
+
 template<class T>
 class Solver {
 	public:
@@ -13,6 +15,8 @@ class Solver {
 	public:
 		T m_dt;
 };
+
+}
 
 #include "solver.cpp"
 #endif

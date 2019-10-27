@@ -5,6 +5,8 @@
 #include "gvector.h"
 #include <memory>
 
+namespace gogolitor {
+
 template<class T>
 class Mesh { // 2D Mesh
 	public:
@@ -66,6 +68,8 @@ class MeshCartesianRegular : public MeshCartesian<T> { // 2D Mesh
 		const double m_dx;
 		const double m_dy;
 };
+
+}
 
 #include "mesh.cpp" // VERY VERY VERY IMPORTANT : ALL THE CODE MUST BE IN THE .h because its templates !!!
 #endif

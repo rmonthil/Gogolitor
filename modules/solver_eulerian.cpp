@@ -7,7 +7,7 @@
 // Solver Class
 
 template<class T>
-SolverEulerian<T>::SolverEulerian(Mesh<T>* pMesh, const double& dt) : Solver<T>(dt), m_pMesh(pMesh) {
+gogolitor::SolverEulerian<T>::SolverEulerian(Mesh<T>* pMesh, const double& dt) : Solver<T>(dt), m_pMesh(pMesh) {
 	
 }
 

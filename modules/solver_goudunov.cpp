@@ -5,7 +5,7 @@
 #include "solver_goudunov.h"
 
 template<class T>
-SolverGoudunov<T>::SolverGoudunov(Mesh<T>* pMesh, const double& dt) : SolverEulerian<T>(pMesh, dt), m_f(pMesh->links.size(), Vector<T>(3)) {
+gogolitor::SolverGoudunov<T>::SolverGoudunov(Mesh<T>* pMesh, const double& dt) : SolverEulerian<T>(pMesh, dt), m_f(pMesh->links.size(), Vector<T>(3)) {
 	Mesh<T>& mesh = *SolverEulerian<T>::m_pMesh;
 	for(std::size_t k = 0; k < mesh.cells.size(); k++){
 		mesh.cells[k].data.resize(MESH_DATA_SIZE, 0.0);
@@ -13,7 +13,7 @@ SolverGoudunov<T>::SolverGoudunov(Mesh<T>* pMesh, const double& dt) : SolverEule
 }
 
 template<class T>
-void SolverGoudunov<T>::update() {
+void gogolitor::SolverGoudunov<T>::update() {
 	Mesh<T>& mesh = *SolverEulerian<T>::m_pMesh;
 	// Just save h
 	for(std::size_t k = 0; k < mesh.cells.size(); k++){
@@ -40,13 +40,13 @@ void SolverGoudunov<T>::update() {
 }
 
 template<class T>
-Vector<T> SolverGoudunov<T>::f(const T& h, const T& un, const T& ut) {
+gogolitor::Vector<T> gogolitor::SolverGoudunov<T>::f(const T& h, const T& un, const T& ut) {
 	Vector<T> flux(3); flux[0] = h*un; flux[1] = g*h*h + un*un*h; flux[2] = un*ut*h;
 	return flux;
 }
 
 template<class T>
-void SolverGoudunov<T>::computeFlux() {
+void gogolitor::SolverGoudunov<T>::computeFlux() {
 	const Mesh<T>& mesh = *SolverEulerian<T>::m_pMesh;
 	for(std::size_t k = 0; k < mesh.links.size(); k++){
 		// Getting ui

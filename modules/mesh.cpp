@@ -5,27 +5,27 @@
 #include "mesh.h"
 
 template<class T>
-Mesh<T>::Cell::Cell() : surface(0), position(2) {
+gogolitor::Mesh<T>::Cell::Cell() : surface(0), position(2) {
 
 }
 
 template<class T>
-Mesh<T>::Link::Link() : size(0), n(2), t(2), pCell1(nullptr), pCell2(nullptr) {
+gogolitor::Mesh<T>::Link::Link() : size(0), n(2), t(2), pCell1(nullptr), pCell2(nullptr) {
 	
 }
 
 template<class T>
-Mesh<T>::Mesh() {
+gogolitor::Mesh<T>::Mesh() {
 }
 
 template<class T>
-MeshStructured<T>::MeshStructured() : Mesh<T>() {
+gogolitor::MeshStructured<T>::MeshStructured() : Mesh<T>() {
 
 }
 
 // TODO : Maybe defining Mesh Blocks ?
 template<class T>
-MeshCartesian<T>::MeshCartesian(const T& lx, const T& ly, const std::size_t& nx, const std::size_t& ny) : MeshStructured<T>(), m_lx(lx), m_ly(ly), m_nx(nx), m_ny(ny) {
+gogolitor::MeshCartesian<T>::MeshCartesian(const T& lx, const T& ly, const std::size_t& nx, const std::size_t& ny) : MeshStructured<T>(), m_lx(lx), m_ly(ly), m_nx(nx), m_ny(ny) {
 	// TODO find solution to remove double
 	// Setting size of Vectors
 	Mesh<T>::cells.resize(nx*ny);
@@ -49,7 +49,7 @@ MeshCartesian<T>::MeshCartesian(const T& lx, const T& ly, const std::size_t& nx,
 }
 
 template<class T>
-MeshCartesianRegular<T>::MeshCartesianRegular(const T& lx, const T& ly, const T& nx, const T& ny) : MeshCartesian<T>(lx, ly, nx, ny), m_dx(lx/nx), m_dy(ly/ny) {
+gogolitor::MeshCartesianRegular<T>::MeshCartesianRegular(const T& lx, const T& ly, const T& nx, const T& ny) : MeshCartesian<T>(lx, ly, nx, ny), m_dx(lx/nx), m_dy(ly/ny) {
 	Vector<T> ex(2); ex[0] = 1.0; ex[1] = 0.0;
 	Vector<T> ey(2); ey[0] = 0.0; ey[1] = 1.0;
 	for(std::size_t i = 0; i < nx; i++) {

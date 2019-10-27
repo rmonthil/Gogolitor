@@ -12,6 +12,8 @@ namespace py = pybind11;
 
 PYBIND11_MAKE_OPAQUE(std::vector<double>);
 
+using namespace gogolitor;
+
 // Trampoline class
 template<class T>
 class PySolver : public Solver<T> {

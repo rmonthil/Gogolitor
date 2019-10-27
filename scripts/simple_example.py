@@ -15,8 +15,8 @@ def init_mesh(m):
     h0 = 20.0
     center = gg.Vector(2)
     center[0], center[1] = lx/2.0, ly/2.0
-    r = 15.0
-    hr = h0 + 0.0
+    r = 5.0
+    hr = h0 + 1.0
     fr = 0.0
     for c in m.cells:
         if (c.position - center).norm() < r:

@@ -5,6 +5,8 @@
 #include "solver.h"
 #include "mesh.h"
 
+namespace gogolitor {
+
 template<class T>
 class SolverEulerian : public Solver<T> {
 	public:
@@ -14,6 +16,8 @@ class SolverEulerian : public Solver<T> {
 	public:
 		Mesh<T>* m_pMesh;
 };
+
+}
 
 #include "solver_eulerian.cpp"
 #endif

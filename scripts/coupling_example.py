@@ -56,7 +56,7 @@ x = [c.position[0] for c in m.cells]
 y = [c.position[1] for c in m.cells]
 h = [c.data[0] for c in m.cells]
 p, = a_ax.plot(x, y, h, c=(0.0, 0.0, 1.0, 0.5), linestyle='', marker='o', ms=0.5)
-p2, = a_ax.plot([lx/2], [ly/2], [oy], c=(1.0, 0.0, 0.0, 0.5), linestyle='', marker='o', ms=1.0)
+p2, = a_ax.plot([lx/2], [ly/2], [oy], c=(1.0, 0.0, 0.0, 0.5), linestyle='', marker='o', ms=5.0)
 title = a_ax.set_title('Solver')
 
 fps = 30.0
