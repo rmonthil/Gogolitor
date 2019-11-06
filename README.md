@@ -78,13 +78,15 @@ Build the documentation in html format using Sphinx :
 - [ ] Write more carefully the bindings
 
 ### Features
+- [ ] Add a Cell Sleep Manager for Eulerian Solvers.
 - [ ] Improve Python visualisation. Build up Python post processing tools.
 - [ ] Couple the fluid to solids.
-	* [ ] Add a possible source terme in the St-Venant equation
+	* [x] Add a possible source terme in the St-Venant equation
 	* [ ] Deduce the fluid forces that should apply to a rigidbody present in the flow
 - [ ] Add new possibilities for mesh generation.
 - [ ] Solver optimisation for a structured mesh ?
 - [ ] Try out other time schemes : Rung-Kuta and/or Adams-Bashforth methods.
+- [ ] Add a Wave Tracking Solver : Look at the boundary element method.
 - [ ] Add a Lagrangian solver : Look at the boundary element method.
 - [ ] Take a look to [vortons][vortons_doc].
 
