@@ -1,7 +1,7 @@
 # Gogolitor
 
 Minimal fluid solver written as a c++ core interfaced with pyton, that 
-tracks a fluid interface. This projecti aims to be used for interactive 
+tracks a fluid interface. This project aims to be used for interactive 
 fluid simulations in videogames.
 
 ## Python Interface
