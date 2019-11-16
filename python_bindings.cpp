@@ -16,6 +16,30 @@ using namespace gogolitor;
 
 // Trampoline class
 template<class T>
+class PyMeshStructured : public MeshStructured<T> {
+	public:
+		using MeshStructured<T>::MeshStructured;
+		
+		Mesh<T>::Cell getCell() override { PYBIND11_OVERLOAD_PURE(Mesh<T>::Cell, MeshStructured<T>, getCell, ); }
+	private:
+};
+template<class T>
+class PyMeshCartesian : public MeshCartesian<T> {
+	public:
+		using MeshCartesian<T>::MeshCartesian;
+		
+		Mesh<T>::Cell getCell() override { PYBIND11_OVERLOAD_PURE(Mesh<T>::Cell, MeshCartesian<T>, getCell, ); }
+	private:
+};
+template<class T>
+class PyMeshCartesianRegular : public MeshCartesianRegular<T> {
+	public:
+		using MeshRegular<T>::MeshCartesianRegular;
+		
+		Mesh<T>::Cell getCell() override { PYBIND11_OVERLOAD_PURE(Mesh<T>::Cell, MeshCartesianRegular<T>, getCell, ); }
+	private:
+};
+template<class T>
 class PySolver : public Solver<T> {
 	public:
 		using Solver<T>::Solver;
@@ -89,18 +113,21 @@ PYBIND11_MODULE(gogolitor, m) {
 		.def_readwrite("cells", &Mesh<double>::cells)
 		.def_readwrite("links", &Mesh<double>::links);
 	
-	py::class_<MeshStructured<double>, Mesh<double>>(m, "MeshStrctured")
-		.def(py::init<>());
+	py::class_<MeshStructured<double>, Mesh<double>, PyMeshStructured<double>>(m, "MeshStrctured")
+		.def(py::init<>())
+		.def("getCell", &MeshCartesian<double>::getCell);
 	
-	py::class_<MeshCartesian<double>, MeshStructured<double>>(m, "MeshCartesian")
+	py::class_<MeshCartesian<double>, MeshStructured<double>, PyMeshCartesian<double>>(m, "MeshCartesian")
 		.def(py::init<const double&, const double&, const std::size_t&, const std::size_t&>())
+		.def("getCell", &MeshCartesian<double>::getCell)
 		.def_readonly("lx", &MeshCartesian<double>::m_lx)
 		.def_readonly("ly", &MeshCartesian<double>::m_ly)
 		.def_readonly("nx", &MeshCartesian<double>::m_nx)
 		.def_readonly("ny", &MeshCartesian<double>::m_ny);
 	
-	py::class_<MeshCartesianRegular<double>, MeshCartesian<double>>(m, "MeshCartesianRegular")
+	py::class_<MeshCartesianRegular<double>, MeshCartesian<double>, PyMeshCartesianRegular<double>>(m, "MeshCartesianRegular")
 		.def(py::init<const double&, const double&, const std::size_t&, const std::size_t&>())
+		.def("getCell", &MeshCartesian<double>::getCell)
 		.def_readonly("dx", &MeshCartesianRegular<double>::m_dx)
 		.def_readonly("dy", &MeshCartesianRegular<double>::m_dy);
 	

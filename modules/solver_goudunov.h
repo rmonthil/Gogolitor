@@ -29,7 +29,7 @@ class SolverGoudunov : public SolverEulerian<T> {
 	private:
 		const T g = 9.81; // TODO Externalize Physics Parameters
 		// Fluxs
-		std::vector<Vector<T>> m_f; // Fx =(Fh, Fuxh, Fuyh)
+		std::vector<Vector<T>> m_f; // F =(Fh, Funh, Futh)
 };
 
 }

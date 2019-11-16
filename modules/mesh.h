@@ -40,6 +40,9 @@ template<class T>
 class MeshStructured : public Mesh<T> { // 2D Mesh
 	public:
 		MeshStructured();
+
+		virtual typename Mesh<T>::Cell getCell(const std::size_t& i, const std::size_t& j) = 0;
+		virtual typename Mesh<T>::Cell getCell(const T& x, const T& y) = 0;
 };
 
 template<class T>
@@ -53,6 +56,8 @@ class MeshCartesian : public MeshStructured<T> { // 2D Mesh
 		};
 	public:
 		MeshCartesian(const T& lx, const T& ly, const std::size_t& nx, const std::size_t& ny);
+		
+		typename Mesh<T>::Cell getCell(const std::size_t& i, const std::size_t& j);
 	public:
 		const double m_lx;
 		const double m_ly;
@@ -64,6 +69,8 @@ template<class T>
 class MeshCartesianRegular : public MeshCartesian<T> { // 2D Mesh
 	public:
 		MeshCartesianRegular(const T& lx, const T& ly, const T& nx, const T& ny);
+
+		typename Mesh<T>::Cell getCell(const T& x, const T& y);
 	public:
 		const double m_dx;
 		const double m_dy;
